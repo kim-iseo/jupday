@@ -101,9 +101,9 @@
                                 <td><%=re.getRegDate() %></td>
                                 <td>
                                 <%if(re.getBest_YN()=='N') {%>
-                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="del_btn">삭제</button></a>
+                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="del_btn">설정</button></a>
                                 <%}else {%>
-                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="re_btn">복원</button></a>
+                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="re_btn">해제</button></a>
                                 <%} %>
                                 </td>
                                 <td>

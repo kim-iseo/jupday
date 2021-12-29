@@ -107,7 +107,7 @@
 					ArrayList<ReviewComment> commentslist = review.getComments();
 				%>
 				<%if(commentslist.isEmpty()){ %>
-					<H2>현재 댓글이 없습니다. 댓글을 작성해보세요</H2>
+					<p>현재 댓글이 없습니다. 댓글을 작성해보세요</p>
 				<%}else{ %>
 				
 					<%for(ReviewComment co : commentslist){ %>
