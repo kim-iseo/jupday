@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="container_top">
                     <div class="count-all">
-                    	<p><span id="green">크루명</span> > 전체 <span>7,777</span> 건</p>
+                    	<p>전체 <span>7,777</span> 건</p>
                     </div>
                     
                     
