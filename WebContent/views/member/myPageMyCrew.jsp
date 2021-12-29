@@ -74,7 +74,7 @@
 									<p class="crew-name"><%=c.getCrewName() %></p>
 									<p class="crew-reg"><%=c.getCrewCreateDate() %></p>
 								</div>
-								<div class="crew-button"><button class="btn-s"><a href="/views/crew/crewSetting.jsp?crewNo=<%=c.getCrewNo()%>">설정</a></button></div>
+								<div class="crew-button"><button class="btn-s"><a href="/crew/crewOnePage.do?crewNo=<%=c.getCrewNo()%>&currentPage=1">이동</a></button></div>
 								</div>
 							<%} %>	
 							<% } %>

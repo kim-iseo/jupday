@@ -1,5 +1,6 @@
 package kr.or.iei.notice.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import kr.or.iei.notice.model.vo.Notice;
@@ -63,5 +64,7 @@ public interface NoticeService {
 	
 	
 	HashMap<String, Object> selectAllFAQList(int currentPage);
+
+	ArrayList<Notice> showNotice();
 
 }

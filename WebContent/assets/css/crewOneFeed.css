@@ -63,6 +63,7 @@
 	height: auto;
 	overflow: hidden;
 	margin-bottom: 40px;
+	position: relative;
 }
 .user-img {
 	float: left;
@@ -70,6 +71,7 @@
 .right-comment {
 	float: left;
 	margin-left: 15px;
+	
 }
 .user-comment>p {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -89,6 +91,21 @@
 	font-size: 16px;
 	color: #2A2A2A;
 	margin-top: 5px;
+}
+.btn-comment {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 87%;
+}
+.btn-comment>button {
+	border: 0;
+	border-radius: 100px;
+	background-color: #AFD485;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	color: #fff;
+	padding: 10px 15px;
 }
 
 .box-write-comment {

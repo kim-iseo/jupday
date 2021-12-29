@@ -22,7 +22,7 @@
 	width: 100%;
 	height: auto;
 	overflow: hidden;
-	padding-bottom: 80px;
+	padding-bottom: 30px;
 }
 .box-one-review {
 	width: 23%;
@@ -73,5 +73,5 @@
 	bottom: 20px;
 }
 .page_ul {
-	padding-top: 30px;
+	padding-bottom: 80px;
 }

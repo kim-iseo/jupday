@@ -149,6 +149,10 @@ button.check{
 .tit-notice {
 	font-size: 18px;
 	margin-bottom: 35px;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .con-notice {
 	width: 100%;

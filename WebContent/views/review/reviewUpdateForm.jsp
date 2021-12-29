@@ -80,13 +80,13 @@
 								<i class="fas fa-chevron-down"></i>
 							</div>
 							<div class="map-content">
-								<!-- 여기가 지도html부분 -->
+								<img alt="" src="/assets/images/mapAPI.PNG" style="width:100%; height:100%;">
 							</div>
 						</div>
 					</div>
 					<div class="box-button">
 						<input type="submit" value="수정" class="btn-m">
-						<input type="button" value="목록" class="btn-m" onclick="location.replace('/review/reviewAllSelect.do');"/>
+						<input type="button" value="목록" class="btn-m btn-golist" onclick="location.replace('/review/reviewAllSelect.do');"/>
 					</div>
 					<%-- 제목까지 수정하도록 구현하려고 했으나, 안타깝게도 제목쪽 DB가 not null 이다 이거 포기하자 --%>
 				</form>

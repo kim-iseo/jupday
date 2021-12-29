@@ -24,7 +24,6 @@
 <body>
 <%
 
-
 HashMap<String,Object> pageDataMap = (HashMap<String,Object>)request.getAttribute("pageDataMap");
 
 ArrayList<Notice> list = (ArrayList<Notice>)pageDataMap.get("list");//꺼내준다.
@@ -68,7 +67,7 @@ int currentPage =(int)request.getAttribute("currentPage");
 					</div>
 					<div class="input-search">
 						<i class="fas fa-search icon-search"></i><!--/// 검색 기능 출발점 (1) ///-->
-						<input type="text" name="keyword" placeholder="검색어을 검색하세요">
+						<input type="text" name="keyword" placeholder="검색어를 검색하세요">
 					</div>
 					<input type="submit" class="btn-rec" value="검색">
 				</form>
@@ -94,7 +93,7 @@ int currentPage =(int)request.getAttribute("currentPage");
 			                <td><%=notice.getNoticeNo()%></td>
 			                <td><div class="text-ellipsis subject"><a href="/notice/noticeNewsSelectContent.do?noticeNo=<%=notice.getNoticeNo()%>&currentPage=<%=currentPage%>"><%=notice.getNoticeTitle()%></a></div></td><!-- 누르면 이동하게 -->
 			                <td><%=notice.getNoticeHits()%></td>
-			                <td><%=notice.getNoticeWriter()%></td>
+			                <td>관리자</td>
 			                <td><%=notice.getNoticeRegDate()%></td>
 			            </tr>
 			             <% }%> 

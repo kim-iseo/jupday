@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import kr.or.iei.common.JDBCTemplate;
+import kr.or.iei.crew.model.vo.Crew;
 import kr.or.iei.notice.model.vo.AnswerFAQ;
 import kr.or.iei.notice.model.vo.BoxFAQ;
 import kr.or.iei.notice.model.vo.Notice;
@@ -509,83 +510,33 @@ public class NoticeDAO {
 		 return noticeCampaign;
 	}
 
-	public ArrayList<Notice> selectSearchNewsContentList(Connection conn, int currentPage, int recordCountPerPage,
-			String keyword, String type) {
+public ArrayList<Notice> showNotice(Connection conn) {
 		
 		PreparedStatement pstmt = null;
-		ResultSet rset=null;
+		ResultSet rset = null;
 		ArrayList<Notice> list = new ArrayList<Notice>();
 		
-		
-		int start = currentPage*recordCountPerPage - (recordCountPerPage-1);
-		int end = currentPage*recordCountPerPage;
-		
-		String query="";
-		
-		switch(type)
-		{//제목-3
-		case "subject" :
-			query=  "select *" + 
-					"		from (select row_number() over(order by N_NO desc)as num, NOTICE.* " + 
-					"		from NOTICE " + 
-					"		where N_TITLE like ? and NOTICE.N_DEL_YN='N') " + 
-					"		where num between ? and ?"; 
-
-			break;
-			//내용-3
-		case "content" :
-			query=  "select *" + 
-					"		from (select row_number() over(order by N_NO desc)as num, NOTICE.* " + 
-					"		from NOTICE " + 
-					"		where N_CONTENT like ? and NOTICE.N_DEL_YN='N') " + 
-					"		where num between ? and ?"; 
-			break;
-			
-		case "all" :
-			 query = "select *" + 
-					 "		from (select row_number() over(order by N_NO desc)as num, NOTICE.* " + 
-					 "		from NOTICE " + 
-					 "		where N_CONTENT like ? or N_Title LIKE ? and NOTICE.N_DEL_YN='N') " + 
-					 "		where num between ? and ?"; 
-			 
-			 break;
-		}
-		
+		String query =  "SELECT * FROM ( " +
+                		"SELECT ROW_NUMBER() OVER(ORDER BY N_NO DESC)AS NUM, NOTICE.* " +
+                		"FROM NOTICE " +
+                		"WHERE N_DEL_YN='N') " +
+                		"WHERE NUM BETWEEN 1 AND 3";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
-			if(type.equals("all"))
-			{
-				pstmt.setString(1, "%"+keyword+"%");
-				pstmt.setString(2, "%"+keyword+"%");
-				pstmt.setInt(3, start);
-				pstmt.setInt(4, end);
-				
-			}else 
-			{
-				pstmt.setString(1, "%"+keyword+"%");
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, end);
-			}
-
-			
-			rset = pstmt.executeQuery();//실행
+			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				
-				Notice notice = new Notice();
+				Notice n = new Notice();
+		
+				n.setNoticeNo(rset.getInt("n_no"));
+				n.setNoticeTitle(rset.getString("n_title"));
+				n.setNoticeContent(rset.getString("n_content"));
+				n.setNoticeRegDate(rset.getDate("n_regDate"));
 				
-				notice.setNoticeNo(rset.getInt("N_NO"));
-				notice.setNoticeWriter(rset.getString("N_WRITER"));
-				notice.setNoticeTitle(rset.getString("N_TITLE"));
-				notice.setNoticeContent(rset.getString("N_CONTENT"));
-				notice.setNoticeRegDate(rset.getDate("N_REGDATE"));
-				notice.setNoticeHits(rset.getInt("N_HITS"));
-				notice.setDelYN(rset.getString("N_DEL_YN").charAt(0));
-
-				
-				list.add(notice);
+				list.add(n);
 			}
 			
 		} catch (SQLException e) {
@@ -596,7 +547,97 @@ public class NoticeDAO {
 			JDBCTemplate.close(pstmt);
 		}
 		return list;
+		
 	}
+public ArrayList<Notice> selectSearchNewsContentList(Connection conn, int currentPage, int recordCountPerPage,
+		String keyword, String type) {
+	
+	PreparedStatement pstmt = null;
+	ResultSet rset=null;
+	ArrayList<Notice> list = new ArrayList<Notice>();
+	
+	
+	int start = currentPage*recordCountPerPage - (recordCountPerPage-1);
+	int end = currentPage*recordCountPerPage;
+	
+	String query="";
+	
+	switch(type)
+	{//제목-3
+	case "subject" :
+		query=  "select *" + 
+				"		from (select row_number() over(order by N_NO desc)as num, NOTICE.* " + 
+				"		from NOTICE " + 
+				"		where N_TITLE like ? and NOTICE.N_DEL_YN='N') " + 
+				"		where num between ? and ?"; 
+
+		break;
+		//내용-3
+	case "content" :
+		query=  "select *" + 
+				"		from (select row_number() over(order by N_NO desc)as num, NOTICE.* " + 
+				"		from NOTICE " + 
+				"		where N_CONTENT like ? and NOTICE.N_DEL_YN='N') " + 
+				"		where num between ? and ?"; 
+		break;
+		
+	case "all" :
+		 query = "select *" + 
+				 "		from (select row_number() over(order by N_NO desc)as num, NOTICE.* " + 
+				 "		from NOTICE " + 
+				 "		where N_CONTENT like ? or N_Title LIKE ? and NOTICE.N_DEL_YN='N') " + 
+				 "		where num between ? and ?"; 
+		 
+		 break;
+	}
+	
+	
+	try {
+		pstmt = conn.prepareStatement(query);
+		
+		if(type.equals("all"))
+		{
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setString(2, "%"+keyword+"%");
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
+			
+		}else 
+		{
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+		}
+
+		
+		rset = pstmt.executeQuery();//실행
+		
+		while(rset.next()) {
+			
+			Notice notice = new Notice();
+			
+			notice.setNoticeNo(rset.getInt("N_NO"));
+			notice.setNoticeWriter(rset.getString("N_WRITER"));
+			notice.setNoticeTitle(rset.getString("N_TITLE"));
+			notice.setNoticeContent(rset.getString("N_CONTENT"));
+			notice.setNoticeRegDate(rset.getDate("N_REGDATE"));
+			notice.setNoticeHits(rset.getInt("N_HITS"));
+			notice.setDelYN(rset.getString("N_DEL_YN").charAt(0));
+
+			
+			list.add(notice);
+		}
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		JDBCTemplate.close(rset);
+		JDBCTemplate.close(pstmt);
+	}
+	return list;
+}
+	
 
 	public String getSearchPageNavi(Connection conn, int naviCountPerPage, int recordCountPerPage, int currentPage,
 			String keyword, String type) {

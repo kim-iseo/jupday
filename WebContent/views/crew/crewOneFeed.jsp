@@ -98,9 +98,12 @@
 									
 								</div>
 							</div>
-							<div class="btn-comment">
-								
-							</div>
+							<%if(m!=null && m.getUserId().equals(cbc.getUserId())) {%>
+								<div class="btn-comment">
+									<button>수정</button>  
+									<button>삭제</button>
+								</div>
+							<%} %>>
 						</div>
 					<%} %>
 				<%} %>
@@ -121,11 +124,12 @@
 			</div>
 			
 			<div class="list-btn">
-				<button class="btn-m btn-golist"><a href="/crew/crewOnePage.do?crewNo=<%=cb.getCrewNo() %>&currentPage=<%=currentPage %>&currentFeedPage=<%=currentFeedPage%>">목록</a></button>
 				<%if(m!=null && m.getNick().equals(cb.getWriter())) {%>
 					<button class="btn-m btn-update"><a href="/crew/crewFeedValue.do?crewNo=<%=cb.getCrewNo() %>&currentPage=<%=currentPage %>&feedNo=<%=cb.getFeedNo()%>&currentFeedPage=<%=currentFeedPage%>">수정</a></button>
 					<button class="btn-m btn-delete"><a href="/crew/crewDeleteFeed.do?crewNo=<%=cb.getCrewNo() %>&currentPage=<%=currentPage %>&feedNo=<%=cb.getFeedNo()%>&currentFeedPage=<%=currentFeedPage%>">삭제</a></button>
 				<%} %>
+				<button class="btn-m btn-golist"><a href="/crew/crewOnePage.do?crewNo=<%=cb.getCrewNo() %>&currentPage=<%=currentPage %>&currentFeedPage=<%=currentFeedPage%>">목록</a></button>
+				
 			</div>
 			
 		</div>

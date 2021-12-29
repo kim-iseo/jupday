@@ -21,6 +21,15 @@ public class NoticeCampaign {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	//메인페이지에서 공지사항 캠페인 리스트에 사용하는 생성자
+	public NoticeCampaign(int campaignNo, String campaignTitle, String campaignContent, Date campaignRegDate) {
+		super();
+		this.campaignNo = campaignNo;
+		this.campaignTitle = campaignTitle;
+		this.campaignContent = campaignContent;
+		this.campaignRegDate = campaignRegDate;
+	}
 
 
 	public NoticeCampaign(int campaignNo, String campaignWriter, String campaignTitle, String campaignContent,

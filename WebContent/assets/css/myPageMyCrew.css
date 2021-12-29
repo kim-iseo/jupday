@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 .user-info {
-	height: 900px;
 	width: 100%;
+	height: auto;
+	padding-bottom: 80px;
 }
 
 .info {
@@ -26,17 +27,10 @@
 	height: 100%;
 	object-fit: cover;
 }
-
-
 div {
 	font-family: 'Noto Sans KR', sans-serif;
 	vertical-align :middle;
-	color: #2A2A2A;
 }
-
-
-
-
 .crew-image {
 	width: 18%;
 	height: 12vh;

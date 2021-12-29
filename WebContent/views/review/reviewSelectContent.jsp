@@ -74,7 +74,7 @@
 				<div class="write-content">
 					<div class="box-content">
 						<div class="box-content-img">
-							<img alt="" src="/assets/images/플로깅리뷰7.jpg">
+							<img alt="" src="/assets/images/review_default.jpg">
 							
 						</div>
 						<p>
@@ -91,7 +91,7 @@
 							<i class="fas fa-chevron-down"></i>
 						</div>
 						<div class="map-content">
-							<img alt="" src="/assets/images/kakaomap2.png" style="width:100%; height:100%;">
+							<img alt="" src="/assets/images/mapAPI.PNG" style="width:100%; height:100%;">
 						</div>
 					</div>
 					
@@ -122,82 +122,84 @@
 							</div>
 							<div class="txt-comment">								
 								<p><%=co.getR_c_comment() %></p>
-
-									<form action ="/views/review/reviewCommentUpdate.jsp" method="post" id="commentUpdateForm" display="none">			
-										<input type="hidden" name="comment" value="<%=co.getR_c_comment() %>"/>
-										<input type="hidden" name="commentNo" value="<%=co.getR_c_no() %>"/>
-										<input type="hidden" name="postNum" value="<%=co.getPostNum() %>"/>
-										<input type="hidden" name="currentPage" value="<%=currentPage%>"/>
-									</form>
-										
-									<%if(m!=null && m.getUserId().equals(co.getUserId())) {%>
-										
-										<button class="coModifyBtn" onclick='coModify("/views/review/reviewCommentUpdate.jsp?comment=<%=co.getR_c_comment()%>&postNum=<%=co.getPostNum()%>&commentNo=<%=co.getR_c_no() %>&currentPage=<%=currentPage%>");'>수정</button>  
-										<button class="coDeleteBtn" commentNo="<%=co.getR_c_no()%>">삭제</button>
-										
-										<script>
-											function coModify(str){
-												console.log(str);
-												
-												window.open(str,"_blank","width=300px, height=100px");
-											}
-										</script>
-										
-										<script>
-											$('.coDeleteBtn').click(function(){
-												
-												if(window.confirm('정말로 해당 댓글을 삭제하시겠습니까?')){
-													//댓글을 삭제하기 위해 필요한 정보는? 댓글번호, 작성자, 게시글번호, 현재페이지도 있어야 한다(다시 해당 post로 돌아가려면)
-													var commentNo = $(this).attr("commentNo");
-													var postNum = <%=review.getPostNum()%>;
-													var currentPage = <%=currentPage%>;
-													
-													//servlet으로 데이터를 전송하기 위한 form 생성
-													var formTag = document.createElement("form");
-													
-													formTag.setAttribute('action','/review/deletePostComment.do');
-													formTag.setAttribute('method','post');
-													formTag.setAttribute('display','none');
-													
-													//<input type="hidden" name="commentNo" value=commentNo>
-													var inputTag = document.createElement("input");
-													inputTag.setAttribute('type','hidden');
-													inputTag.setAttribute('name','commentNo');
-													inputTag.setAttribute('value',commentNo);
-													
-													formTag.appendChild(inputTag);
-													
-													//<input type="hidden" name="boardNo" value=boardNo>
-													var inputTag = document.createElement("input");
-													inputTag.setAttribute('type','hidden');
-													inputTag.setAttribute('name','postNum');
-													inputTag.setAttribute('value',postNum);
-													
-													formTag.appendChild(inputTag);
-													
-													//<input type="hidden" name="currentPage" value=currentPage>
-													var inputTag = document.createElement("input");
-													inputTag.setAttribute('type','hidden');
-													inputTag.setAttribute('name','currentPage');
-													inputTag.setAttribute('value',currentPage);
-													
-													formTag.appendChild(inputTag);
-													
-													document.body.appendChild(formTag); 
-
-													formTag.submit();
-	
-												}else{
-													alert('댓글 삭제를 취소하였습니다');
-												}
-												
-											});
-										</script>
-										
-									<%}else{ %>
-										
-									<%} %>
 							</div>
+							<div class="btn-comment">
+								<form action ="/views/review/reviewCommentUpdate.jsp" method="post" id="commentUpdateForm" display="none">			
+									<input type="hidden" name="comment" value="<%=co.getR_c_comment() %>"/>
+									<input type="hidden" name="commentNo" value="<%=co.getR_c_no() %>"/>
+									<input type="hidden" name="postNum" value="<%=co.getPostNum() %>"/>
+									<input type="hidden" name="currentPage" value="<%=currentPage%>"/>
+								</form>
+							
+								<%if(m!=null && m.getUserId().equals(co.getUserId())) {%>
+									
+									
+									<button class="coModifyBtn" onclick='coModify("/views/review/reviewCommentUpdate.jsp?comment=<%=co.getR_c_comment()%>&postNum=<%=co.getPostNum()%>&commentNo=<%=co.getR_c_no() %>&currentPage=<%=currentPage%>");'>수정</button>  
+									<button class="coDeleteBtn" commentNo="<%=co.getR_c_no()%>">삭제</button>
+									
+									<script>
+										function coModify(str){
+											console.log(str);
+											
+											window.open(str,"_blank","width=300px, height=100px");
+										}
+									</script>
+									
+									<script>
+										$('.coDeleteBtn').click(function(){
+											
+											if(window.confirm('정말로 해당 댓글을 삭제하시겠습니까?')){
+												//댓글을 삭제하기 위해 필요한 정보는? 댓글번호, 작성자, 게시글번호, 현재페이지도 있어야 한다(다시 해당 post로 돌아가려면)
+												var commentNo = $(this).attr("commentNo");
+												var postNum = <%=review.getPostNum()%>;
+												var currentPage = <%=currentPage%>;
+												
+												//servlet으로 데이터를 전송하기 위한 form 생성
+												var formTag = document.createElement("form");
+												
+												formTag.setAttribute('action','/review/deletePostComment.do');
+												formTag.setAttribute('method','post');
+												formTag.setAttribute('display','none');
+												
+												//<input type="hidden" name="commentNo" value=commentNo>
+												var inputTag = document.createElement("input");
+												inputTag.setAttribute('type','hidden');
+												inputTag.setAttribute('name','commentNo');
+												inputTag.setAttribute('value',commentNo);
+												
+												formTag.appendChild(inputTag);
+												
+												//<input type="hidden" name="boardNo" value=boardNo>
+												var inputTag = document.createElement("input");
+												inputTag.setAttribute('type','hidden');
+												inputTag.setAttribute('name','postNum');
+												inputTag.setAttribute('value',postNum);
+												
+												formTag.appendChild(inputTag);
+												
+												//<input type="hidden" name="currentPage" value=currentPage>
+												var inputTag = document.createElement("input");
+												inputTag.setAttribute('type','hidden');
+												inputTag.setAttribute('name','currentPage');
+												inputTag.setAttribute('value',currentPage);
+												
+												formTag.appendChild(inputTag);
+												
+												document.body.appendChild(formTag); 
+	
+												formTag.submit();
+	
+											}else{
+												alert('댓글 삭제를 취소하였습니다');
+											}
+											
+										});
+									</script>
+									
+								<%}else{ %>
+									
+								<%} %>
+							</div>		
 						</div>
 					</div>
 
@@ -243,9 +245,10 @@
 					<input type="hidden" name="postTitle" value="<%=review.getPostTitle()%>"/>
 				
 					<button class="btn-m btn-update" id="modifyBtn">수정</button>
+					<button class="btn-m btn-delete" id="deleteBtn">삭제</button>
 					<button class="btn-m btn-golist"><a href="/review/reviewAllSelect.do?currentPage=<%=currentPage%>">목록</a></button><br>
 				</form>		
-					<button class="btn-m btn-delete" id="deleteBtn">삭제</button>
+					
 				
 					
 					<script>

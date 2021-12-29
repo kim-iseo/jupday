@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import kr.or.iei.common.JDBCTemplate;
 import kr.or.iei.member.model.vo.Member;
@@ -616,49 +615,8 @@ public class ReviewDAO {
 				list.add(review);
 			}
 			
-		}catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		return list;
-	}	
-	
-	public ArrayList<Review> selectMonthStamp(Connection conn, String userId, String startDate, String endDate) {
-
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<Review> list = new ArrayList<Review>();
-		
-		String query = "SELECT * FROM REVIEW WHERE USERID = ? AND REGDATE BETWEEN ? ||'01' AND ? ||'01'";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, userId);
-			pstmt.setString(2, startDate);
-			pstmt.setString(3, endDate);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Review review = new Review();
-				review.setPostNum(rset.getInt("postNum"));
-				review.setUserId(rset.getString("userId"));
-				review.setRegDate(rset.getDate("regDate"));
-				review.setPostTitle(rset.getString("postTitle"));
-				review.setPostContent(rset.getString("postContent"));
-				review.setHits(rset.getInt("hits"));
-				review.setGood(rset.getInt("good"));
-				review.setBest_YN(rset.getString("best_YN").charAt(0));
-				review.setDel_YN(rset.getString("del_YN").charAt(0));
-				review.setNick(rset.getString("nick"));
-				review.setRegDate(rset.getDate("REGDATE"));
-				list.add(review);
-			}
-			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rset);
@@ -765,6 +723,8 @@ public class ReviewDAO {
 		return count;
 	}
 
+	
+
 	public int deletePost(Connection conn, int postNum, String userId) {
 		
 		PreparedStatement pstmt = null;
@@ -831,6 +791,37 @@ public class ReviewDAO {
 		}
 		
 		return list2;
+	}
+	
+	public ArrayList<Review> selectMonthStamp(Connection conn, String userId, String startDate, String endDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> list = new ArrayList<Review>();
+		
+		String query = "SELECT * FROM REVIEW WHERE USERID = ? AND REGDATE BETWEEN ? ||'01' AND ? ||'01'";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, startDate);
+			pstmt.setString(3, endDate);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Review review = new Review();
+				
+				review.setRegDate(rset.getDate("REGDATE"));
+				list.add(review);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
 	}
 }
 

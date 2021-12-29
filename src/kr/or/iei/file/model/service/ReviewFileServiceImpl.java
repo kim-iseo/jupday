@@ -1,4 +1,4 @@
-package kr.or.iei.file.service;
+package kr.or.iei.file.model.service;
 
 import java.sql.Connection;
 

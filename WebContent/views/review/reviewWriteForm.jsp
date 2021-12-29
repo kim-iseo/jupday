@@ -68,13 +68,13 @@
 								<i class="fas fa-chevron-down"></i>
 							</div>
 							<div class="map-content">
-								<img alt="" src="/assets/images/kakaomap2.png" style="width:100%; height:100%;">
+								<img alt="" src="/assets/images/mapAPI.PNG" style="width:100%; height:100%;">
 							</div>
 						</div>
 					</div>
 					<div class="box-button">
 						<input type="submit" value="완료" class="btn-m">
-						<input type="button" value="목록" class="btn-m" onclick="location.replace('/review/reviewAllSelect.do');"/>
+						<input type="button" value="목록" class="btn-m btn-golist" onclick="location.replace('/review/reviewAllSelect.do');"/>
 						<%-- 이거..String type으로 가니까 integer.parseint 해줘야하나? --%>
 					</div>
 				</form>

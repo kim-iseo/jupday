@@ -1,3 +1,7 @@
+<%@page import="kr.or.iei.notice.model.vo.NoticeCampaign"%>
+<%@page import="oracle.net.aso.n"%>
+<%@page import="kr.or.iei.notice.model.vo.Notice"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="kr.or.iei.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,6 +27,14 @@
 </head>
 
 <body>
+
+	<%
+	//서블릿에서 보내는 값 가져오기
+	ArrayList<Notice> noticeList = (ArrayList<Notice>)request.getAttribute("noticeList");
+	ArrayList<NoticeCampaign> noticeCampaignList = (ArrayList<NoticeCampaign>)request.getAttribute("noticeCampaignList");
+	%>
+
+
 	<div id="wrap">
 		<!-- header -->
 		<%@ include file="/views/commons/header/header.jsp"%>
@@ -163,61 +175,31 @@
 					</div>
 					
 					<div class="box-notice-list">
-						<div class="box-notice-one">
-							<p class="tit-notice">사이트 정기점검 안내</p>
-							<p class="con-notice">
-								11월 서버 정기 점검일은 다음과 같이 진행될 예정입니다. 
-								11월 7일(일) 새벽 2시 ~ 새벽 5시 회원님들의 많은 양해와 참고 부탁드리며 
-								어쩌구어쩌구어쩌구어쩌구어쩌구어쩌구
-							</p>
-							<p class="date-notice">2021-11-30</p>
-						</div>
-						<div class="box-notice-one">
-							<p class="tit-notice">사이트 정기점검 안내</p>
-							<p class="con-notice">
-								11월 서버 정기 점검일은 다음과 같이 진행될 예정입니다. 
-								11월 7일(일) 새벽 2시 ~ 새벽 5시 회원님들의 많은 양해와 참고 부탁드리며 
-								어쩌구어쩌구어쩌구어쩌구어쩌구어쩌구
-							</p>
-							<p class="date-notice">2021-11-30</p>
-						</div>
-						<div class="box-notice-one">
-							<p class="tit-notice">사이트 정기점검 안내</p>
-							<p class="con-notice">
-								11월 서버 정기 점검일은 다음과 같이 진행될 예정입니다. 
-								11월 7일(일) 새벽 2시 ~ 새벽 5시 회원님들의 많은 양해와 참고 부탁드리며 
-								어쩌구어쩌구어쩌구어쩌구어쩌구어쩌구
-							</p>
-							<p class="date-notice">2021-11-30</p>
-						</div>
+						<%for(Notice n : noticeList) {%>
+							<div class="box-notice-one">
+								<p class="tit-notice"><%=n.getNoticeTitle() %></p>
+								<p class="con-notice">
+									<%=n.getNoticeContent() %>
+								</p>
+								<p class="date-notice"><%=n.getNoticeRegDate() %></p>
+							</div>
+						<%} %>
 					</div>
 					
+					
 					<div class="box-campaign-list">
-						<div class="box-notice-one">
-							<p class="tit-notice">캠페인입니다</p>
-							<p class="con-notice">
-								이부분은 캠페인 내용이 나오는걸로
-								어쩌구어쩌구어쩌구어쩌구어쩌구어쩌구
-							</p>
-							<p class="date-notice">2021-11-30</p>
-						</div>
-						<div class="box-notice-one">
-							<p class="tit-notice">캠페인입니다</p>
-							<p class="con-notice">
-								이부분은 캠페인 내용이 나오는걸로
-								어쩌구어쩌구어쩌구어쩌구어쩌구어쩌구
-							</p>
-							<p class="date-notice">2021-11-30</p>
-						</div>
-						<div class="box-notice-one">
-							<p class="tit-notice">캠페인입니다</p>
-							<p class="con-notice">
-								이부분은 캠페인 내용이 나오는걸로
-								어쩌구어쩌구어쩌구어쩌구어쩌구어쩌구
-							</p>
-							<p class="date-notice">2021-11-30</p>
-						</div>
+						<%for(NoticeCampaign nc : noticeCampaignList) {%>
+							<div class="box-notice-one">
+								<p class="tit-notice"><%=nc.getCampaignTitle() %></p>
+								<p class="con-notice">
+									<%=nc.getCampaignContent() %>
+								</p>
+								<p class="date-notice"><%=nc.getCampaignRegDate() %></p>
+							</div>
+						<%} %>
 					</div>
+					
+					
 				</div>
 			</div>
 		</div>

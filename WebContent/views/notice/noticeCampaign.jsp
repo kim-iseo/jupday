@@ -68,7 +68,7 @@ int currentPage =(int)request.getAttribute("currentPage");
 					</div>
 					<div class="input-search">
 						<i class="fas fa-search icon-search"></i><!--/// 검색 기능 출발점2 ///-->
-						<input type="text" name="keyword" placeholder="검색어을 검색하세요">
+						<input type="text" name="keyword" placeholder="검색어를 검색하세요">
 					</div>
 					<input type="submit" class="btn-rec" value="검색">
 				</form>

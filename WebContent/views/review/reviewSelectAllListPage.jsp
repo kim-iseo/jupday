@@ -80,6 +80,72 @@
 								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰3.jpg">
 							</a>
 						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="box-review-hover">
+									<p class="tit-review"><%=review.getPostTitle() %></p>
+									<i class="far fa-heart"></i><span>1,202</span>
+									<i class="far fa-comment"></i><span>657</span>
+									<!--<i class="far fa-comment-dots"></i>-->
+								</div>
+								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰4.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="box-review-hover">
+									<p class="tit-review"><%=review.getPostTitle() %></p>
+									<i class="far fa-heart"></i><span>1,202</span>
+									<i class="far fa-comment"></i><span>657</span>
+									<!--<i class="far fa-comment-dots"></i>-->
+								</div>
+								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰5.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="box-review-hover">
+									<p class="tit-review"><%=review.getPostTitle() %></p>
+									<i class="far fa-heart"></i><span>1,202</span>
+									<i class="far fa-comment"></i><span>657</span>
+									<!--<i class="far fa-comment-dots"></i>-->
+								</div>
+								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰6.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="box-review-hover">
+									<p class="tit-review"><%=review.getPostTitle() %></p>
+									<i class="far fa-heart"></i><span>1,202</span>
+									<i class="far fa-comment"></i><span>657</span>
+									<!--<i class="far fa-comment-dots"></i>-->
+								</div>
+								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰7.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="box-review-hover">
+									<p class="tit-review"><%=review.getPostTitle() %></p>
+									<i class="far fa-heart"></i><span>1,202</span>
+									<i class="far fa-comment"></i><span>657</span>
+									<!--<i class="far fa-comment-dots"></i>-->
+								</div>
+								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰8.jpg">
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="box-review-hover">
+									<p class="tit-review"><%=review.getPostTitle() %></p>
+									<i class="far fa-heart"></i><span>1,202</span>
+									<i class="far fa-comment"></i><span>657</span>
+									<!--<i class="far fa-comment-dots"></i>-->
+								</div>
+								<img alt="베스트리뷰사진" src="/assets/images/플로깅리뷰9.jpg">
+							</a>
+						</div>
 					<%} %>	
 					<%--내가 봤을 때, 하나의 서블릿에서 넘어가는 객체는 하나여야 됨, 문제가 그거 같음, 결국 header에서 2개의 서블릿을 호출해야 할 듯 --%>					
 						
@@ -117,7 +183,7 @@
 						</div>
 						<div class="input-search">
 							<i class="fas fa-search icon-search"></i>
-							<input type="text" name="keyword" placeholder="검색어을 검색하세요">
+							<input type="text" name="keyword" placeholder="검색어를 검색하세요">
 						</div>
 						<input type="submit" class="btn-rec" value="검색">
 					</form>
@@ -133,7 +199,7 @@
 				<div class="box-one-review">
 					<div class="box-img">
 						<a href="/review/reviewSelectContent.do?postNum=<%=review.getPostNum()%>&currentPage=<%=currentPage%>">
-							<img alt="" src="/upload/gramnotebook_1640736448800_jupday.png">
+							<img alt="" src="/assets/images/review_default.jpg">
 						</a>
 					</div>
 					<div class="box-txt">
@@ -148,15 +214,13 @@
 				</div>
 					
 				<%} %>
-				
-				<div id="page_wrap">
-                   <ul class="page_ul">
-                     	<%=pageNavi %>         
-                   </ul>
-               	</div>
 			</div>
 			
-			
+			<div id="page_wrap">
+                 <ul class="page_ul">
+                   	<%=pageNavi %>         
+                 </ul>
+            </div>
 			
 			
 		</div>

@@ -103,9 +103,15 @@
                                 
                                 
                                 <%if(re.getBest_YN()=='N') {%>
+<<<<<<< HEAD
                                 <a href="/admin/reviewBestYNChange.do?postnum=<%=re.getPostnum() %>&best_YN=<%=re.getBest_YN() %>"><button class="modify_btn">설정</button></a>
                                 <%}else {%>
                                 <a href="/admin/reviewBestYNChange.do?postnum=<%=re.getPostnum() %>&best_YN=<%=re.getBest_YN() %>"><button class="modify_btn">해제</button></a>
+=======
+                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="modify_btn">설정</button></a>
+                                <%}else {%>
+                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="modify_btn">해제</button></a>
+>>>>>>> 812fbb543a1419e19e188009ec5a9a0ff701bc9d
                                 <%} %>
                                 </td>
                                 <td>

@@ -20,7 +20,16 @@ public class Notice {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	//메인페이지에서 공지사항 리스트에 사용하는 생성자
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeRegDate) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeRegDate = noticeRegDate;
+	}
+	
 	public Notice(int noticeNo, String noticeWriter, String noticeTitle, String noticeContent, Date noticeRegDate,
 			int noticeHits, char delYN) {
 		super();

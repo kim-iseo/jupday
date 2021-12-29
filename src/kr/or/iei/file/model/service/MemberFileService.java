@@ -1,4 +1,4 @@
-package kr.or.iei.file.service;
+package kr.or.iei.file.model.service;
 
 import kr.or.iei.file.model.vo.MemberFileData;
 

@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import kr.or.iei.file.model.service.MemberFileService;
+import kr.or.iei.file.model.service.MemberFileServiceImpl;
 import kr.or.iei.file.model.vo.MemberFileData;
-import kr.or.iei.file.service.MemberFileService;
-import kr.or.iei.file.service.MemberFileServiceImpl;
 import kr.or.iei.member.model.service.MemberService;
 import kr.or.iei.member.model.service.MemberServiceImpl;
 import kr.or.iei.member.model.vo.Member;
