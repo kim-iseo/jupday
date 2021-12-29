@@ -23,7 +23,6 @@
 <body>
     <div id="wrap">
         
-        <%AdminFAQ adfaq = (AdminFAQ)request.getAttribute("adfaq"); %>
         <%Member m = (Member)session.getAttribute("member");%>
         <!-- navigation -->
 		<%@ include file="/views/commons/header/navigationAdmin.jsp"%>

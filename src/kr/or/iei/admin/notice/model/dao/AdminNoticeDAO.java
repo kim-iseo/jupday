@@ -754,26 +754,28 @@ public class AdminNoticeDAO {
 		return result;
 	}
 
-	public int searchFAQPostNo(Connection conn, AdminFAQ adf) {
+	public int searchFAQPostNo(Connection conn, AdminFAQ adfwrite) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		int faqNo = 0;
 		
-		String query = " SELECT FAQ_NO FROM (SELECT ROW_NUMBER() OVER(ORDER BY FAQ_NO ASC) AS NUM " + 
-				" FAQBOX.* FROM FAQBOX WHERE FAQ_TITLE=? AND FAQ_CONTENT=?) WHERE NUM=1 ";
+		String query = " SELECT FAQ_NO FROM " + 
+				"		(SELECT ROW_NUMBER() OVER(ORDER BY FAQ_NO ASC) AS NUM, FAQBOX.* FROM FAQBOX " +
+				"		WHERE FAQ_TITLE=? AND FAQ_CONTENT=?) WHERE NUM = 1 ";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, adf.getFaq_Title());
-			pstmt.setString(2, adf.getFaq_Content());
+			pstmt.setString(1, adfwrite.getFaq_Title());
+			pstmt.setString(2, adfwrite.getFaq_Content());
 			
 			rset = pstmt.executeQuery();
 			
 			if(rset.next())
 			{
-				faqNo = rset.getInt("faqNo");
+				faqNo = rset.getInt("faq_No");
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -783,14 +785,14 @@ public class AdminNoticeDAO {
 		}
 		
 		return faqNo;
-		
-		
-		
-		
+
+	}
+
+
+
 
 	} 
 
 
-	}
-
+	
 	

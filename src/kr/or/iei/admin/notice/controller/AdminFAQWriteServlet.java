@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.iei.admin.notice.model.service.AdminFAQService;
 import kr.or.iei.admin.notice.model.service.AdminFAQServiceImpl;
+import kr.or.iei.admin.notice.model.service.AdminNoticeService;
+import kr.or.iei.admin.notice.model.service.AdminNoticeServiceImpl;
 import kr.or.iei.admin.notice.model.vo.AdminFAQ;
 
 /**
@@ -37,14 +39,14 @@ public class AdminFAQWriteServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		AdminFAQ adf = new AdminFAQ();
-		adf.setFaq_Title(title);
-		adf.setFaq_Content(content);
+		AdminFAQ adfwrite = new AdminFAQ();
+		adfwrite.setFaq_Title(title);
+		adfwrite.setFaq_Content(content);
 		
 		AdminFAQService adfService = new AdminFAQServiceImpl();
-		int result = adfService.insertFAQWrite(adf);
-		int faqNo = adfService.searchFAQPostNo(adf);
-		
+		int result = adfService.insertFAQWrite(adfwrite);
+		int faqNo = adfService.searchFAQPostNo(adfwrite);
+				
 		if(result>0)
 		{
 			response.sendRedirect("/admin/adminFAQSelectContent.do?faqNo="+faqNo+"&currentPage=1");
@@ -52,7 +54,7 @@ public class AdminFAQWriteServlet extends HttpServlet {
 		{
 			response.sendRedirect("/views/commons/error.jsp");
 		}		
-		
+
 	}
 
 	/**
