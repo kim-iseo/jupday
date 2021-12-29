@@ -45,7 +45,7 @@
         <div id="content">
             <div class="container">
 				<form action="/admin/adminNoticePostUpdate.do" method="post" id="textUpdateForm">
-					<div class="box-write" name="content" id="content">
+					<div class="box-write">
 						<input type="hidden" name="noticeNo" value="<%=adnotice.getN_No() %>">
 							<div class="box-subject">
 							<input type="text" disabled='true' name="subjectArea" id="subjectArea" value="<%=adnotice.getN_Title() %>">
@@ -64,8 +64,8 @@
 					</div>
 					<div class="box-button">
 						<input type="button" class="btn-rec" id="updateBtn" value="수정">
-						<button class="btn-rec"><a href="/admin/noticeManageList.do">목록</a></button>
-						<input type="button" class="btn-rec" id="cancleBtn" value="취소">						
+						<input type="reset" class="btn-rec" id="cancleBtn" value="취소">
+						<button class="btn-rec"><a href="/admin/noticeManageList.do">목록</a></button>			
 					</div>
 				</form>
             </div>

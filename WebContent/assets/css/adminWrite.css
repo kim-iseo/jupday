@@ -76,6 +76,10 @@ form {
 	background-color: #5EB656;
 	margin-right: 30px;
 }
+.box-button>input[type="reset"] {
+	background-color: #AFD485;
+	margin-right: 30px;
+}
 .box-button>button {
 	background-color: #C8C8C8;
 }

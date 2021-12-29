@@ -65,5 +65,23 @@ public class AdminFAQServiceImpl implements AdminFAQService {
 		return result;
 	}
 
+	@Override
+	public int insertFAQWrite(AdminFAQ adf) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = adnDAO.insertFAQWrite(conn, adf);
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	@Override
+	public int searchFAQPostNo(AdminFAQ adf) {
+		Connection conn = JDBCTemplate.getConnection();
+		int faqNo = adnDAO.searchFAQPostNo(conn, adf);
+		JDBCTemplate.close(conn);
+		return faqNo;
+	}
+	
 
 }

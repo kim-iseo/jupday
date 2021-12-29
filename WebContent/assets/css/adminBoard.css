@@ -123,13 +123,22 @@
 	text-align: center;
 }
 .text-ellipsis {
-	width: 300px;
 	white-space: nowrap; 
 	overflow: hidden;
 	text-overflow: ellipsis;
+	text-align: left;
 }
-.subject {
-	width: 250px;
+.w-200 {
+	width: 200px;
+}
+.w-270 {
+	width: 270px;
+}
+.w-300 {
+	width: 300px;
+}
+.w-400 {
+	width: 400px;
 }
 
 .container table tr td button {
@@ -153,11 +162,11 @@
     color: black;
 } 
 .container table tr td button.del_btn {
-    background-color: #AFD485;
+    background-color: #5EB656;
 }
 
 .container table tr td button.re_btn {
-     background-color: #5EB656;
+     background-color: #FF6464;
 }
 .container table tr td button a {
 	 display: block;

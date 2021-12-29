@@ -139,7 +139,7 @@ public class AdminReviewDAO {
 		return count;
 	}
 
-	public int updateCrewDelYN(int postnum, char delYN, Connection conn) {
+	public int updateReviewDelYN(int postnum, char delYN, Connection conn) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
@@ -160,6 +160,29 @@ public class AdminReviewDAO {
 		
 		return result;
 	}
+
+	public int updateReviewBestYN(int postnum, char bestYN, Connection conn) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "UPDATE REVIEW SET BEST_YN=? WHERE POSTNUM=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, String.valueOf(bestYN));
+			pstmt.setInt(2, postnum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 	}
 
 

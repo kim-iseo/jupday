@@ -729,6 +729,65 @@ public class AdminNoticeDAO {
 		} 
 		return nNo;
 
+	}
+
+	public int insertFAQWrite(Connection conn, AdminFAQ adf) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "INSERT INTO FAQBOX VALUES(FAQ_NO_SEQ.NEXTVAL,?,?,'N')";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, adf.getFaq_Title());
+			pstmt.setString(2, adf.getFaq_Content());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int searchFAQPostNo(Connection conn, AdminFAQ adf) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		int faqNo = 0;
+		
+		String query = " SELECT FAQ_NO FROM (SELECT ROW_NUMBER() OVER(ORDER BY FAQ_NO ASC) AS NUM " + 
+				" FAQBOX.* FROM FAQBOX WHERE FAQ_TITLE=? AND FAQ_CONTENT=?) WHERE NUM=1 ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, adf.getFaq_Title());
+			pstmt.setString(2, adf.getFaq_Content());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next())
+			{
+				faqNo = rset.getInt("faqNo");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return faqNo;
+		
+		
+		
+		
+
 	} 
 
 

@@ -14,4 +14,8 @@ public interface AdminFAQService {
 
 	int updateFAQPost(AdminFAQ adfaq);
 
+	int insertFAQWrite(AdminFAQ adf);
+
+	int searchFAQPostNo(AdminFAQ adf);
+
 }

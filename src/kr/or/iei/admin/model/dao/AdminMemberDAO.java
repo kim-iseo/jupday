@@ -44,7 +44,7 @@ public class AdminMemberDAO {
 		
 		String query = "select * from "
 				+ " (select row_number() "
-				+ " over (order by USERID ASC) AS NUM, "
+				+ " over (order by AUTHORITY_ID ASC) AS NUM, "
 				+ " MEMBER.* FROM MEMBER ) "
 				+ " WHERE NUM BETWEEN ? AND ?";
 		
@@ -159,7 +159,8 @@ public class AdminMemberDAO {
 		
 		return count;
 	}
-	
-}
 
+	
+
+}
 

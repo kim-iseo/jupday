@@ -8,4 +8,6 @@ public interface AdminReviewService {
 
 	int updateReviewDelYN(int postnum, char delYN);
 
+	int updateReviewBestYN(int postnum, char bestYN);
+
 }

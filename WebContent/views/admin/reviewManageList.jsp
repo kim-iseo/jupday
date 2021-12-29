@@ -84,7 +84,7 @@
                                 <th width="250">게시글제목</th>
                                 <th width="300">게시글내용</th>
                                 <th width="200">작성자</th>
-                                <th width="200">좋아요</th>
+                                <th width="100">좋아요</th>
                                 <th width="200">작성일자</th>
                                 <th width="200">베스트설정</th>                                                                                              
                                 <th width="150">삭제 / 복원</th>
@@ -94,16 +94,18 @@
                         <tbody>
                             <tr>
                                 <td><%=re.getPostnum() %></td>
-                                <td><div class="text-ellipsis subject"><%=re.getPostTitle() %></div></td>
-                                <td><div class="text-ellipsis"><%=re.getPostContent() %></div></td>
+                                <td><div class="text-ellipsis w-200"><%=re.getPostTitle() %></div></td>
+                                <td><div class="text-ellipsis w-270"><%=re.getPostContent() %></div></td>
                                 <td><%=re.getNick() %></td>
                                 <td><%=re.getGood() %></td>
                                 <td><%=re.getRegDate() %></td>
                                 <td>
+                                
+                                
                                 <%if(re.getBest_YN()=='N') {%>
-                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="del_btn">설정</button></a>
+                                <a href="/admin/reviewBestYNChange.do?postnum=<%=re.getPostnum() %>&best_YN=<%=re.getBest_YN() %>"><button class="modify_btn">설정</button></a>
                                 <%}else {%>
-                                <a href="/admin/reviewDelYNChange.do?postnum=<%=re.getPostnum() %>&del_YN=<%=re.getDel_YN()%>"><button class="re_btn">해제</button></a>
+                                <a href="/admin/reviewBestYNChange.do?postnum=<%=re.getPostnum() %>&best_YN=<%=re.getBest_YN() %>"><button class="modify_btn">해제</button></a>
                                 <%} %>
                                 </td>
                                 <td>

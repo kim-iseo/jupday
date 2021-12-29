@@ -92,16 +92,16 @@
                                 <th width="250">게시글제목</th>
                                 <th width="300">게시글내용</th>
                                 <th width="100">작성일자</th>
-                                <th width="150">수정하기</th>
-                                <th width="150">삭제 / 복원</th>
+                                <th width="100">수정하기</th>
+                                <th width="100">삭제 / 복원</th>
                             </tr>
                         </thead>
                         <%for(AdminNotice an : list) {%>
                         <tbody>
                             <tr>
                                 <td><%=an.getN_No() %></td>
-                                <td><div class="text-ellipsis subject"><%=an.getN_Title() %></div></td>
-                                <td><div class="text-ellipsis"><%=an.getN_Content() %></div></td>
+                                <td><div class="text-ellipsis w-300"><%=an.getN_Title() %></div></td>
+                                <td><div class="text-ellipsis w-400"><%=an.getN_Content() %></div></td>
                                 <td><%=an.getN_regDate() %></td>
                                 <td><button class="modify_btn"><a href="/admin/adminNoticeSelectContent.do?n_No=<%=an.getN_No()%>">수정</a></button>
                                 <td>

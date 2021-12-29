@@ -60,7 +60,7 @@
                     <div class="box-search">
                     	<div class="btn-write">
 							<button class="btn-rec">
-								<a href="./noticeFAQWrite.jsp">글쓰기</a>
+								<a href="/views/admin/noticeFAQWrite.jsp">글쓰기</a>
 							</button>
 						</div>
                     
@@ -90,16 +90,16 @@
                                 <th width="50">게시번호</th>
                                 <th width="250">게시글제목</th>
                                 <th width="300">게시글내용</th>
-                                <th width="150">수정하기</th>
-                                <th width="150">삭제 / 복원</th>
+                                <th width="100">수정하기</th>
+                                <th width="100">삭제 / 복원</th>
                             </tr>
                         </thead>
                          <%for(AdminFAQ afaq : list) {%>                        
                         <tbody>
                             <tr>
                                 <td><%=afaq.getFaq_No() %></td>
-                                <td><div class="text-ellipsis subject"><%=afaq.getFaq_Title() %></div></td>
-                                <td><div class="text-ellipsis"><%=afaq.getFaq_Content() %></a></div></td>
+                                <td><div class="text-ellipsis w-300"><%=afaq.getFaq_Title() %></div></td>
+                                <td><div class="text-ellipsis w-400"><%=afaq.getFaq_Content() %></a></div></td>
                                 <td><button class="modify_btn"><a href="/admin/adminFAQSelectContent.do?faqNo=<%=afaq.getFaq_No()%>">수정</a></button>
                                 <td>
                                 <%if(afaq.getFaq_Del_YN()=='N') {%>

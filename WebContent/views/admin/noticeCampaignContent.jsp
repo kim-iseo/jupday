@@ -65,8 +65,8 @@
 					</div>
 					<div class="box-button">
 						<input type="button"  value="수정" class="btn-rec" id="updateBtn">
+						<input type="reset" class="btn-rec" id="cancleBtn" value="취소">
 						<button class="btn-rec"><a href="/admin/adminCampaignManageList.do">목록</a></button>
-						<input type="button" value="취소" class="btn-rec" id="cancleBtn">
 					</div>
 				</form>
             </div>

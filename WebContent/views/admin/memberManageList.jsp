@@ -48,7 +48,7 @@
            
    
             <div class="box-user">
-                <a href="/"><%=m.getNick()%></a>
+                <a href="/"><%=m.getNick()%>님</a>
                 <a href="/member/logout.do">로그아웃</a>
             </div>
         </div>

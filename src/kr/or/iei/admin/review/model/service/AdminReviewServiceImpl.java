@@ -40,12 +40,27 @@ public class AdminReviewServiceImpl implements AdminReviewService {
 	@Override
 	public int updateReviewDelYN(int postnum, char delYN) {
 		Connection conn = JDBCTemplate.getConnection();
-		int result = adrDAO.updateCrewDelYN(postnum,delYN,conn);
+		int result = adrDAO.updateReviewDelYN(postnum,delYN,conn);
 		if(result>0) JDBCTemplate.commit(conn);
 		else JDBCTemplate.rollback(conn);
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+	@Override
+	public int updateReviewBestYN(int postnum, char bestYN) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = adrDAO.updateReviewBestYN(postnum,bestYN,conn);
+		if(result>0) JDBCTemplate.commit(conn);
+		else JDBCTemplate.rollback(conn);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+
+
+
 	}
 
 

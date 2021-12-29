@@ -93,7 +93,7 @@
                             <tr>
                                 <td><%=cr.getCrewNo() %></td>
                                 <td><%=cr.getCrewName() %></td>
-                                <td><%=cr.getCrewInfo() %></td>
+                                <td class="text-ellipsis"><%=cr.getCrewInfo() %></td>
                                 <td><%=cr.getCrewCount() %></td>
                                 <td><%=cr.getCrewCreateDate() %></td>
                                 <td><button class="man_btn"><a href="/admin/crewFeedManageList.do">관리</a></button>

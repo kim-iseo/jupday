@@ -1,3 +1,4 @@
+<%@page import="kr.or.iei.member.model.vo.Member"%>
 <%@page import="kr.or.iei.admin.notice.model.vo.AdminFAQ"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,7 +24,7 @@
     <div id="wrap">
         
         <%AdminFAQ adfaq = (AdminFAQ)request.getAttribute("adfaq"); %>
-        
+        <%Member m = (Member)session.getAttribute("member");%>
         <!-- navigation -->
 		<%@ include file="/views/commons/header/navigationAdmin.jsp"%>
         
@@ -34,20 +35,20 @@
             </div>
 
             <div class="box-user">
-                <a href="/">admin님</a>
+                <a href="/"><%=m.getNick() %>님</a>
                 <a href="/member/logout.do">로그아웃</a>
             </div>
         </div>
 
         <div id="content">
             <div class="container">
-				<form action="">
+				<form action="/admin/FAQWrite.do" method="post">
 					<div class="box-write">
 						<div class="box-subject">
-							<input type="text" placeholder="제목을 입력하세요" ><%=adfaq.getFaq_Title() %>
+							<input type="text" placeholder="제목을 입력하세요" name="title">
 						</div>
 						<div class="box-content">
-							<textarea placeholder="내용을 입력하세요" <%=adfaq.getFaq_Content() %>></textarea>
+							<textarea placeholder="내용을 입력하세요" name="content"></textarea>
 						</div>
 						<div class="box-upload">
 							<label for="upload">
@@ -59,7 +60,7 @@
 					</div>
 					<div class="box-button">
 						<input type="submit" value="완료" class="btn-rec">
-						<button class="btn-rec"><a href="./noticeFAQManageList.jsp">목록</a></button>
+						<button class="btn-rec"><a href="/admin/adminFAQManageList.do">목록</a></button>
 					</div>
 				</form>
             </div>
